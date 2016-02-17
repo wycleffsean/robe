@@ -1,0 +1,3 @@
+[submodule "vendor/jxcore"]
+	path = vendor/jxcore
+	url = git@github.com:jxcore/jxcore.git
