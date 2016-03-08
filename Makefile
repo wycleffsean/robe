@@ -7,111 +7,92 @@ Q1 = $(V:1=)
 Q = $(Q1:0=@)
 ECHO1 = $(V:1=@:)
 ECHO = $(ECHO1:0=@echo)
-NULLCMD = :
 
 #### Start of system configuration section. ####
 
 srcdir = ext/robe
-topdir = /Users/sean/.rubies/ruby-2.2.2/include/ruby-2.2.0
+topdir = /Users/sean/.rubies/rbx-3.5.0/vm/include/capi
 hdrdir = $(topdir)
-arch_hdrdir = /Users/sean/.rubies/ruby-2.2.2/include/ruby-2.2.0/x86_64-darwin14
+arch_hdrdir = /Users/sean/.rubies/rbx-3.5.0/vm/include/capi
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/Users/sean/.rubies/ruby-2.2.2
-rubysitearchprefix = $(rubylibprefix)/$(sitearch)
-rubyarchprefix = $(rubylibprefix)/$(arch)
-rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
+prefix = /Users/sean/.rubies/rbx-3.5.0
+install_prefix = 
 exec_prefix = $(prefix)
-vendorarchhdrdir = $(vendorhdrdir)/$(sitearch)
-sitearchhdrdir = $(sitehdrdir)/$(sitearch)
-rubyarchhdrdir = $(rubyhdrdir)/$(arch)
-vendorhdrdir = $(rubyhdrdir)/vendor_ruby
-sitehdrdir = $(rubyhdrdir)/site_ruby
-rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
-vendorarchdir = $(vendorlibdir)/$(sitearch)
-vendorlibdir = $(vendordir)/$(ruby_version)
-vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(sitelibdir)/$(sitearch)
-sitelibdir = $(sitedir)/$(ruby_version)
-sitedir = $(rubylibprefix)/site_ruby
-rubyarchdir = $(rubylibdir)/$(arch)
-rubylibdir = $(rubylibprefix)/$(ruby_version)
-sitearchincludedir = $(includedir)/$(sitearch)
-archincludedir = $(includedir)/$(arch)
-sitearchlibdir = $(libdir)/$(sitearch)
-archlibdir = $(libdir)/$(arch)
-ridir = $(datarootdir)/$(RI_BASE_NAME)
-mandir = $(datarootdir)/man
-localedir = $(datarootdir)/locale
-libdir = $(exec_prefix)/lib
-psdir = $(docdir)
-pdfdir = $(docdir)
-dvidir = $(docdir)
-htmldir = $(docdir)
-infodir = $(datarootdir)/info
-docdir = $(datarootdir)/doc/$(PACKAGE)
-oldincludedir = $(DESTDIR)/usr/include
-includedir = $(prefix)/include
-localstatedir = $(prefix)/var
-sharedstatedir = $(prefix)/com
-sysconfdir = $(prefix)/etc
-datadir = $(datarootdir)
-datarootdir = $(prefix)/share
-libexecdir = $(exec_prefix)/libexec
+bindir = /Users/sean/.rubies/rbx-3.5.0/bin
 sbindir = $(exec_prefix)/sbin
-bindir = $(exec_prefix)/bin
-archdir = $(rubyarchdir)
+libexecdir = $(exec_prefix)/libexec
+datarootdir = $(prefix)/share
+datadir = $(datarootdir)
+sysconfdir = $(prefix)/etc
+sharedstatedir = $(prefix)/com
+localstatedir = $(prefix)/var
+includedir = $(prefix)/include
+oldincludedir = /usr/include
+docdir = $(datarootdir)/doc/$(PACKAGE)
+infodir = $(datarootdir)/info
+htmldir = $(docdir)
+dvidir = $(docdir)
+pdfdir = $(docdir)
+psdir = $(docdir)
+libdir = $(exec_prefix)/lib
+localedir = $(datarootdir)/locale
+mandir = $(datarootdir)/man
+rubyhdrdir = /Users/sean/.rubies/rbx-3.5.0/vm/include/capi
+sitedir = /Users/sean/.rubies/rbx-3.5.0/site
+sitelibdir = /Users/sean/.rubies/rbx-3.5.0/site
+rubylibdir = /Users/sean/.rubies/rbx-3.5.0/site
+archdir = /Users/sean/.rubies/rbx-3.5.0/site/x86_64-darwin15.0.0
+sitearchdir = /Users/sean/.rubies/rbx-3.5.0/site/x86_64-darwin15.0.0
+rubyarchhdrdir = /Users/sean/.rubies/rbx-3.5.0/vm/include/capi
 
 
-CC = clang
+CC = gcc
 CXX = g++
-LIBRUBY = $(LIBRUBY_A)
-LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
+LIBRUBY = $(LIBRUBY_SO)
+LIBRUBY_A = 
 LIBRUBYARG_SHARED = 
-LIBRUBYARG_STATIC = -l$(RUBY_SO_NAME)-static -framework CoreFoundation
+LIBRUBYARG_STATIC = 
 empty =
 OUTFLAG = -o $(empty)
 COUTFLAG = -o $(empty)
 
 RUBY_EXTCONF_H = 
-cflags   =  $(optflags) $(debugflags) $(warnflags)
-optflags = -O3 -fno-fast-math
-debugflags = -ggdb3
-warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens
-CCDLFLAGS = -fno-common
-CFLAGS   = $(CCDLFLAGS) $(cflags)  -pipe $(ARCH_FLAG)
+cflags   = 
+optflags = 
+debugflags = 
+warnflags = 
+CCDLFLAGS =  -fPIC
+CFLAGS   = $(CCDLFLAGS) -g -O2 -I/usr/local/opt/openssl/include -fPIC -D_DARWIN_USE_64_BIT_INODE $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS =   -I/usr/local/opt/openssl/include -I/usr/local/opt/readline/include -I/usr/local/opt/libyaml/include -I/usr/local/opt/gdbm/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags)
-CXXFLAGS = $(CCDLFLAGS) $(cxxflags) $(ARCH_FLAG)
-ldflags  = -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib 
-dldflags = -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib  
+CPPFLAGS =  -I/Users/sean/code/gems/robe/ext/robe/include/node/public  -I/Users/sean/.rubies/rbx-3.5.0/include 
+CXXFLAGS = $(CCDLFLAGS) -g -O2 $(ARCH_FLAG)
+ldflags  =  -L/usr/local/opt/openssl/lib  -L/Users/sean/.rubies/rbx-3.5.0/lib 
+dldflags =  
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
-LDSHARED = $(CC) -dynamic -bundle
-LDSHAREDXX = $(CXX) -dynamic -bundle
+LDSHARED = $(CXX) -lstdc++ -fPIC -bundle -flat_namespace
+LDSHAREDXX = g++ -bundle -flat_namespace
 AR = ar
 EXEEXT = 
 
-RUBY_INSTALL_NAME = $(RUBY_BASE_NAME)
-RUBY_SO_NAME = ruby
+RUBY_INSTALL_NAME = rbx
+RUBY_SO_NAME = rubinius-3.5
 RUBYW_INSTALL_NAME = 
-RUBY_VERSION_NAME = $(RUBY_BASE_NAME)-$(ruby_version)
-RUBYW_BASE_NAME = rubyw
-RUBY_BASE_NAME = ruby
 
-arch = x86_64-darwin14
-sitearch = $(arch)
-ruby_version = 2.2.0
-ruby = $(bindir)/$(RUBY_BASE_NAME)
+arch = x86_64-darwin15.0.0
+sitearch = x86_64-darwin15.0.0
+ruby_version = 2.2
+ruby = $(bindir)/rbx
 RUBY = $(ruby)
-ruby_headers = $(hdrdir)/ruby.h $(hdrdir)/ruby/ruby.h $(hdrdir)/ruby/defines.h $(hdrdir)/ruby/missing.h $(hdrdir)/ruby/intern.h $(hdrdir)/ruby/st.h $(hdrdir)/ruby/subst.h $(arch_hdrdir)/ruby/config.h
+ruby_headers = $(hdrdir)/ruby.h $(hdrdir)/ruby/defines.h $(arch_hdrdir)/ruby/config.h
 
 RM = rm -f
 RM_RF = $(RUBY) -run -e rm -- -rf
-RMDIRS = rmdir -p
+RMDIRS = $(RUBY) -run -e rmdir -- -p
 MAKEDIRS = mkdir -p
-INSTALL = /usr/bin/install -c
+INSTALL = install -c
 INSTALL_PROG = $(INSTALL) -m 0755
 INSTALL_DATA = $(INSTALL) -m 644
 COPY = cp
@@ -121,8 +102,8 @@ TOUCH = exit >
 
 preload = 
 
-libpath = /usr/local/opt/openssl/lib /usr/local/opt/readline/lib /usr/local/opt/libyaml/lib /usr/local/opt/gdbm/lib . $(libdir)
-LIBPATH =  -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib -L. -L$(libdir)
+libpath = . $(libdir) /Users/sean/.rubies/rbx-3.5.0/lib /Users/sean/code/gems/robe/ext/robe/bin
+LIBPATH =  -L. -L$(libdir) -L/Users/sean/.rubies/rbx-3.5.0/lib -L/Users/sean/code/gems/robe/ext/robe/bin
 DEFFILE = 
 
 CLEANFILES = mkmf.log
@@ -132,8 +113,8 @@ DISTCLEANDIRS =
 extout = 
 extout_prefix = 
 target_prefix = 
-LOCAL_LIBS = 
-LIBS =   -lpthread -lgmp -ldl -lobjc 
+LOCAL_LIBS = -lcares -lchrome_zlib -lhttp_parser -ljx -lopenssl -lsqlite3 -luv -lv8_base -lv8_nosnapshot -lstdc++ 
+LIBS = $(LIBRUBYARG_STATIC)   
 ORIG_SRCS = robe.c
 SRCS = $(ORIG_SRCS) 
 OBJS = robe.o
@@ -145,13 +126,12 @@ DLLIB = $(TARGET).bundle
 EXTSTATIC = 
 STATIC_LIB = 
 
-TIMESTAMP_DIR = .
-BINDIR        = $(bindir)
-RUBYCOMMONDIR = $(sitedir)$(target_prefix)
-RUBYLIBDIR    = $(sitelibdir)$(target_prefix)
-RUBYARCHDIR   = $(sitearchdir)$(target_prefix)
-HDRDIR        = $(rubyhdrdir)/ruby$(target_prefix)
-ARCHHDRDIR    = $(rubyhdrdir)/$(arch)/ruby$(target_prefix)
+BINDIR        = $(DESTDIR)$(bindir)
+RUBYCOMMONDIR = $(DESTDIR)$(sitedir)$(target_prefix)
+RUBYLIBDIR    = $(DESTDIR)$(sitelibdir)$(target_prefix)
+RUBYARCHDIR   = $(DESTDIR)$(sitearchdir)$(target_prefix)
+HDRDIR        = $(DESTDIR)$(rubyhdrdir)/ruby$(target_prefix)
+ARCHHDRDIR    = $(DESTDIR)$(rubyhdrdir)/$(arch)/ruby$(target_prefix)
 
 TARGET_SO     = $(DLLIB)
 CLEANLIBS     = $(TARGET).bundle 
@@ -181,7 +161,7 @@ distclean: clean distclean-so distclean-static distclean-rb-default distclean-rb
 realclean: distclean
 install: install-so install-rb
 
-install-so: $(DLLIB) $(TIMESTAMP_DIR)/.RUBYARCHDIR.time
+install-so: $(DLLIB) ./.RUBYARCHDIR.time
 	$(INSTALL_PROG) $(DLLIB) $(RUBYARCHDIR)
 clean-static::
 	-$(Q)$(RM) $(STATIC_LIB)
@@ -190,70 +170,49 @@ install-rb-default: pre-install-rb-default
 pre-install-rb: Makefile
 pre-install-rb-default: Makefile
 pre-install-rb-default:
-	@$(NULLCMD)
-$(TIMESTAMP_DIR)/.RUBYARCHDIR.time:
-	$(Q) $(MAKEDIRS) $(@D) $(RUBYARCHDIR)
+	$(ECHO) installing default robe libraries
+./.RUBYARCHDIR.time:
+	$(Q) $(MAKEDIRS) $(RUBYARCHDIR)
 	$(Q) $(TOUCH) $@
 
 site-install: site-install-so site-install-rb
 site-install-so: install-so
 site-install-rb: install-rb
 
-.SUFFIXES: .c .m .cc .mm .cxx .cpp .o .S
+.SUFFIXES: .c .m .cc .mm .cxx .cpp .C .o
 
 .cc.o:
 	$(ECHO) compiling $(<)
 	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
 
-.cc.S:
-	$(ECHO) translating $(<)
-	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -S $<
-
 .mm.o:
 	$(ECHO) compiling $(<)
 	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
-
-.mm.S:
-	$(ECHO) translating $(<)
-	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -S $<
 
 .cxx.o:
 	$(ECHO) compiling $(<)
 	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
 
-.cxx.S:
-	$(ECHO) translating $(<)
-	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -S $<
-
 .cpp.o:
 	$(ECHO) compiling $(<)
 	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
 
-.cpp.S:
-	$(ECHO) translating $(<)
-	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -S $<
+.C.o:
+	$(ECHO) compiling $(<)
+	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
 
 .c.o:
 	$(ECHO) compiling $(<)
 	$(Q) $(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -c $<
 
-.c.S:
-	$(ECHO) translating $(<)
-	$(Q) $(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -S $<
-
 .m.o:
 	$(ECHO) compiling $(<)
 	$(Q) $(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -c $<
-
-.m.S:
-	$(ECHO) translating $(<)
-	$(Q) $(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -S $<
 
 $(DLLIB): $(OBJS) Makefile
 	$(ECHO) linking shared-object $(DLLIB)
 	-$(Q)$(RM) $(@)
 	$(Q) $(LDSHARED) -o $@ $(OBJS) $(LIBPATH) $(DLDFLAGS) $(LOCAL_LIBS) $(LIBS)
-	$(Q) $(POSTLINK)
 
 
 
